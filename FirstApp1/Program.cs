@@ -8,34 +8,41 @@ namespace FirstApp1
 {
     class Program
     {
-        static int Factorial(int n)
+        enum Operation
         {
-            if (n == 0)
-                return 1;
-            else
-                return n * Factorial(n - 1);
+            Add,
+            Sub,
+            Mult,
+            Div
         }
 
-        // f(n) = f(n-1)+f(n-2)
-        //1, 1, 2, 3, 5, 8, 13, 21,...
-        // F(0) = 0; F(1) = 1
-
-        static int Fibonachi(int n)
+        static void ApplyOperation(double x, double y, Operation op)
         {
-            if (n == 0)
-                return 0;
-            if (n == 1)
-                return 1;
-            else
-                return Fibonachi(n - 1) + Fibonachi(n - 2);
+            double result = 0.0;
+            switch (op)
+            {
+                case Operation.Add:
+                    result = x + y;
+                    break;
+                case Operation.Sub:
+                    result = x - y;
+                    break;
+                case Operation.Mult:
+                    result = x * y;
+                    break;
+                case Operation.Div:
+                    result = x / y;
+                    break;
+            }
+            Console.WriteLine(result);
         }
 
         static void Main(string[] args)
         {
-            int x = Fibonachi(8);
-            Console.WriteLine(x);
-            Console.WriteLine(Fibonachi(4));
-            Console.WriteLine(Fibonachi(6));
+            ApplyOperation(10, 15, Operation.Add);
+            ApplyOperation(10, 15, Operation.Sub);
+            ApplyOperation(10, 15, Operation.Mult);
+            ApplyOperation(10, 15, Operation.Div);
             Console.ReadKey();
         }
           
